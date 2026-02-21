@@ -27,21 +27,16 @@ menuItems.forEach(item => {
 function showSection(sectionId) {
    isTransitioning = true;
 
-   // First, ensure all menu items are in visible state before transitioning
    menuItems.forEach((item) => {
-      // Remove initial-load class
       item.classList.remove('initial-load');
 
-      // Set to visible state explicitly
       item.style.opacity = '1';
       item.style.transform = 'translateY(0) scale(1)';
       item.style.animation = 'none';
    });
 
-   // Force reflow to apply the visible state
    void menuGrid.offsetWidth;
 
-   // Now apply staggered fade out transition
    menuItems.forEach((item, index) => {
       setTimeout(() => {
          item.style.transition = 'all 0.4s ease-out';
@@ -50,7 +45,6 @@ function showSection(sectionId) {
       }, index * 50);
    });
 
-   // Hide header and footer
    mainHeader.style.animation = 'none';
    mainHeader.style.opacity = '1';
    mainFooter.style.animation = 'none';
@@ -63,13 +57,11 @@ function showSection(sectionId) {
    mainFooter.style.transition = 'opacity 0.4s ease';
    mainFooter.style.opacity = '0';
 
-   // Show content section after menu animation
    setTimeout(() => {
       menuGrid.style.display = 'none';
       mainHeader.style.display = 'none';
       mainFooter.style.display = 'none';
 
-      // Reset menu item styles for next time
       menuItems.forEach(item => {
          item.style.transition = '';
          item.style.opacity = '';
