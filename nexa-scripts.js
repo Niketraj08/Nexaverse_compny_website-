@@ -27,6 +27,7 @@ menuItems.forEach(item => {
 function showSection(sectionId) {
    isTransitioning = true;
 
+   // First, ensure all menu items are in visible state before transitioning
    menuItems.forEach((item) => {
       // Remove initial-load class
       item.classList.remove('initial-load');
@@ -37,6 +38,7 @@ function showSection(sectionId) {
       item.style.animation = 'none';
    });
 
+   // Force reflow to apply the visible state
    void menuGrid.offsetWidth;
 
    // Now apply staggered fade out transition
